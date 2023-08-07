@@ -58,8 +58,13 @@ public class TareaController {
 			Tarea tarea = repo.findById(id)
 					            .orElseThrow(() -> new ResourceNotFoundException("No existe la tarea con el identificador : " + id));
 			
+		        // Se valida descripcion y fecha no sean null
+			if(detallesTarea.getDescripcion() != null) {
 			tarea.setDescripcion(detallesTarea.getDescripcion());
+			}
+			if(detallesTarea.getFechaCreacion() != null) {
 			tarea.setFechaCreacion(detallesTarea.getFechaCreacion());
+			}
 			tarea.setVigente(detallesTarea.isVigente());
 
 			
