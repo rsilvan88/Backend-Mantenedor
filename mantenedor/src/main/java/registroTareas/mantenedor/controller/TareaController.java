@@ -39,6 +39,31 @@ public class TareaController {
 	public Tarea guardarTarea(@RequestBody Tarea tarea) {
 		return tareaService.guardarTarea(tarea);
 	}
+<<<<<<< HEAD
+=======
+	//Lista una tarea por id
+	@GetMapping("/tareas/{id}")
+	public ResponseEntity<Tarea> obtenerTareaId(@PathVariable Long id){
+		Tarea tarea = repo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("No existe tarea con identificador"+ id) );
+		return ResponseEntity.ok(tarea);
+	}
+	
+	//este metodo sirve para actualiza tarea
+		@PutMapping("/tareas/{id}")
+		public ResponseEntity<Tarea> actualizarTarea(@PathVariable Long id,@RequestBody Tarea detallesTarea){
+			Tarea tarea = repo.findById(id)
+					            .orElseThrow(() -> new ResourceNotFoundException("No existe la tarea con el identificador : " + id));
+			
+		        // Se valida descripcion y fecha no sean null
+			if(detallesTarea.getDescripcion() != null) {
+			tarea.setDescripcion(detallesTarea.getDescripcion());
+			}
+			if(detallesTarea.getFechaCreacion() != null) {
+			tarea.setFechaCreacion(detallesTarea.getFechaCreacion());
+			}
+			tarea.setVigente(detallesTarea.isVigente());
+>>>>>>> 19c1f442cd9c5e96b67e7e1b3aa104672da251e2
 
 	// Lista una tarea por id
 	@GetMapping("/tareas/{id}")
