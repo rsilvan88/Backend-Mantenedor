@@ -1,5 +1,6 @@
 package registroTareas.mantenedor.model;
 
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -42,6 +43,7 @@ public class Tarea {
 	}
 	
 	public Date getFechaCreacion() {
+		
 		return fechaCreacion;
 	}
 
